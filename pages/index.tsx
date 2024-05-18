@@ -1,6 +1,6 @@
-
 import { useEffect, useState } from 'react';
-import fetchCharacters from '../lib/marvel';
+import { useRouter } from 'next/router';
+import { fetchCharacters } from '../lib/marvel';
 
 interface Thumbnail {
   path: string;
@@ -13,8 +13,9 @@ interface Character {
   thumbnail: Thumbnail;
 }
 
-const Characters: React.FC = () => {
+const Characters = () => {
   const [characters, setCharacters] = useState<Character[]>([]);
+  const router = useRouter();
 
   useEffect(() => {
     const getCharacters = async () => {
@@ -25,13 +26,25 @@ const Characters: React.FC = () => {
     getCharacters();
   }, []);
 
+  const handleCharacterClick = (id: number) => {
+    router.push(`/character/${id}`);
+  };
+
   return (
     <div>
       <h1>Marvel Characters</h1>
       <div className="characters">
-        {characters.map(character => (
-          <div key={character.id} className="character">
-            <img src={`${character.thumbnail.path}.${character.thumbnail.extension}`} alt={character.name} />
+        {characters.map((character) => (
+          <div
+            key={character.id}
+            className="character"
+            onClick={() => handleCharacterClick(character.id)}
+            style={{ cursor: 'pointer' }}
+          >
+            <img
+              src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+              alt={character.name}
+            />
             <p>{character.name}</p>
           </div>
         ))}
