@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.page-container {
+  @apply bg-cover bg-center min-h-screen;
+  background-image: url('/assets/backgroundSite.jpg'); /* Atualize o caminho conforme necessário */
+}
