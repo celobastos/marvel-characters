@@ -1,0 +1,39 @@
+.infoBox {
+    background-color: #1a1a1a;
+    padding: 16px;
+    border-radius: 8px;
+    margin: 10px;
+    flex-basis: 45%;
+    margin-bottom: 20px;
+  }
+  
+  .comicsTitle {
+    color: #fff;
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+  
+  .comicList {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .comicItem {
+    text-align: center;
+  }
+  
+  .comicThumbnail {
+    width: 150px;
+    height: 225px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  
+  .comicName {
+    color: #fff;
+    word-wrap: break-word;
+    white-space: normal;
+  }
+  

@@ -3,8 +3,6 @@ import md5 from 'md5';
 
 const publicKey = process.env.NEXT_PUBLIC_MARVEL_PUBLIC_KEY!;
 const privateKey = process.env.NEXT_PUBLIC_MARVEL_PRIVATE_KEY!;
-const baseUrl = 'https://gateway.marvel.com:443/v1/public/characters';
-
 const ts = new Date().getTime();
 const hash = md5(ts + privateKey + publicKey);
 
@@ -65,9 +63,12 @@ interface Character {
   urls: Url[];
 }
 
-const fetchCharacters = async (): Promise<Character[]> => {
+const fetchCharacters = async (offset = 0, limit = 100): Promise<Character[]> => {
   try {
-    const response = await api.get('/characters');
+    const response = await api.get('/characters', {
+      params: { limit, offset },
+    });
+
     return response.data.data.results.map((result: any) => ({
       id: result.id,
       name: result.name,
@@ -83,7 +84,7 @@ const fetchCharacters = async (): Promise<Character[]> => {
     }));
   } catch (error) {
     console.error('Error fetching characters:', error);
-    return [];
+    throw error;
   }
 };
 
@@ -110,7 +111,6 @@ const fetchCharacter = async (id: string): Promise<Character> => {
   }
 };
 
-// Adicionar a função fetchComic
 const fetchComic = async (comicUrl: string): Promise<any> => {
   try {
     const response = await axios.get(comicUrl, {

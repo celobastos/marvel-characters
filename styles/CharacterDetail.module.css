@@ -1,0 +1,29 @@
+.pageContainer {
+    background-image: url('/assets/backgroundSite.jpg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+  
+  .contentWrapper {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 32px;
+    border-radius: 8px;
+    max-width: 75%;
+    width: 100%;
+    min-height: 110vh;
+  }
+  
+  .characterDetail {
+    text-align: center;
+  }
+  
+  .infoContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
