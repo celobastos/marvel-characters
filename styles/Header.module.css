@@ -1,6 +1,13 @@
-/* components/Header/Header.module.css */
-.header {
-    @apply flex items-center justify-between mb-16;
+
+  .header {
+    @apply flex items-center justify-between;
+  }
+  
+  .logo {
+    @apply h-48; /* Adjust the height as needed */
+    padding-left: 5%;
+    height: 200px; /* Increase the height */
+    width: auto; /* Ensure the aspect ratio is maintained */
   }
   
   .searchBar {

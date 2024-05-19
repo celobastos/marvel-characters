@@ -6,12 +6,14 @@ import CharacterInfo from '../../components/CharacterDetail/CharacterInfo';
 import ComicList from '../../components/CharacterDetail/ComicList';
 import { Character, Thumbnail } from '../../interfaces/CharacterInterfaces';
 import styles from '../../styles/CharacterDetail.module.css';
+import Spinner from '../../components/Spinner';
 
 const CharacterDetail: React.FC = () => {
   const router = useRouter();
   const { id } = router.query;
   const [character, setCharacter] = useState<Character | null>(null);
   const [comicsThumbnails, setComicsThumbnails] = useState<{ [key: string]: Thumbnail }>({});
+  const [loading, setLoading] = useState(true); // Add loading state
 
   useEffect(() => {
     if (id) {
@@ -25,14 +27,15 @@ const CharacterDetail: React.FC = () => {
           thumbnails[comic.resourceURI] = comicData.thumbnail;
         }
         setComicsThumbnails(thumbnails);
+        setLoading(false); // Set loading to false after data is fetched
       };
 
       getCharacter();
     }
   }, [id]);
 
-  if (!character) {
-    return <div>Loading...</div>;
+  if (loading || !character) {
+    return <Spinner />;
   }
 
   return (

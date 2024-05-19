@@ -12,6 +12,9 @@ const config: Config = {
       backgroundImage: {
         'site-background': "url('/assets/backgroundSite.jpg')",
       },
+      fontFamily: {
+        marvel: ['MarvelFont', 'sans-serif'], // Define your custom font here
+      },
     },
   },
   plugins: [],

@@ -1,10 +1,10 @@
-// pages/characters/index.tsx
 import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { fetchCharacters } from './../lib/marvel';
 import Header from './../components/Header';
 import CharacterCard from './../components/Characters/CharacterCard';
 import Pagination from './../components/Characters/Pagination';
+import Spinner from './../components/Spinner';
 import { Character } from './../interfaces/CharacterInterfaces';
 import styles from './../styles/Characters.module.css';
 
@@ -15,16 +15,18 @@ const Characters = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [loading, setLoading] = useState(true); // Add loading state
   const charactersPerPage = 20;
   const router = useRouter();
   const searchBarRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const getCharacters = async () => {
-      const data = await fetchCharacters(0, 100); // Fetch 100 characters
+      const data = await fetchCharacters(0, 100);
       setCharacters(data);
       setFilteredCharacters(data.slice(0, charactersPerPage));
       setTotalPages(Math.ceil(data.length / charactersPerPage));
+      setLoading(false); // Set loading to false after data is fetched
     };
 
     getCharacters();
@@ -85,20 +87,26 @@ const Characters = () => {
           handleCharacterClick={handleCharacterClick}
           setShowDropdown={setShowDropdown}
         />
-        <div className={styles.characters}>
-          {filteredCharacters.map((character) => (
-            <CharacterCard
-              key={character.id}
-              character={character}
-              handleCharacterClick={handleCharacterClick}
+        {loading ? (
+          <Spinner />
+        ) : (
+          <>
+            <div className={styles.characters}>
+              {filteredCharacters.map((character) => (
+                <CharacterCard
+                  key={character.id}
+                  character={character}
+                  handleCharacterClick={handleCharacterClick}
+                />
+              ))}
+            </div>
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              handlePageChange={handlePageChange}
             />
-          ))}
-        </div>
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          handlePageChange={handlePageChange}
-        />
+          </>
+        )}
       </div>
     </div>
   );

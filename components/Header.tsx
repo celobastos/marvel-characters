@@ -29,7 +29,7 @@ const Header: React.FC<HeaderProps> = ({
 
   return (
     <div className={styles.header}>
-      <h1 className="text-white text-2xl">Marvel Characters</h1>
+      <img src="/assets/Marvel Archive.svg" alt="Marvel Archive" className={styles.logo} />
       <div className={styles.searchBar} ref={searchBarRef}>
         <input
           type="text"

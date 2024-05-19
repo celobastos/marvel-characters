@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'MarvelFont';
+  src: url('/assets/fonts/MarvelFont-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MarvelFont';
+  src: url('/assets/fonts/MarvelFont-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+h1 {
+  font-family: 'MarvelFont', sans-serif !important; /* Ensure the custom font is applied */
+}
+
 .page-container {
   @apply bg-cover bg-center min-h-screen flex items-center justify-center;
   background-image: url('/assets/backgroundSite.jpg'); /* Atualize o caminho conforme necessário */
@@ -26,11 +44,11 @@
 
 .search-bar input {
   @apply p-2 text-lg w-80 rounded-lg pl-4; /* Adicionar bordas arredondadas de 8px */
-  outline: none; /* Remover a borda ao selecionar */
+  outline: none; 
 }
 
 .search-bar input:focus {
-  @apply border-none; /* Certificar-se de que a borda não aparece ao focar */
+  @apply border-none; 
 }
 
 .characters {
