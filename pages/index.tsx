@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { fetchCharacters } from '../lib/marvel';
 
@@ -17,7 +17,9 @@ const Characters = () => {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [filteredCharacters, setFilteredCharacters] = useState<Character[]>([]);
   const [search, setSearch] = useState('');
+  const [showDropdown, setShowDropdown] = useState(false);
   const router = useRouter();
+  const searchBarRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const getCharacters = async () => {
@@ -27,6 +29,19 @@ const Characters = () => {
     };
 
     getCharacters();
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (searchBarRef.current && !searchBarRef.current.contains(event.target as Node)) {
+        setShowDropdown(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
   }, []);
 
   const handleCharacterClick = (id: number) => {
@@ -41,92 +56,56 @@ const Characters = () => {
         character.name.toLowerCase().includes(searchValue.toLowerCase())
       );
       setFilteredCharacters(filtered);
+      setShowDropdown(true);
     } else {
       setFilteredCharacters(characters);
+      setShowDropdown(false);
     }
   };
 
   return (
     <div className="page-container">
-      <h1>Marvel Characters</h1>
-      <div className="search-bar">
-        <input
-          type="text"
-          value={search}
-          onChange={handleSearchChange}
-          placeholder="Search characters..."
-        />
-        {search && (
-          <div className="dropdown">
-            {filteredCharacters.map((character) => (
-              <div
-                key={character.id}
-                className="dropdown-item"
-                onClick={() => handleCharacterClick(character.id)}
-                style={{ cursor: 'pointer' }}
-              >
-                {character.name}
-              </div>
-            ))}
-          </div>
-        )}
+      <div className="content-wrapper">
+        <h1 className="text-white text-center text-2xl mb-4">Marvel Characters</h1>
+        <div className="search-bar relative" ref={searchBarRef}>
+          <input
+            type="text"
+            value={search}
+            onChange={handleSearchChange}
+            placeholder="Search characters..."
+            onFocus={() => setShowDropdown(true)}
+          />
+          {showDropdown && (
+            <div className="dropdown">
+              {filteredCharacters.map((character) => (
+                <div
+                  key={character.id}
+                  className="dropdown-item"
+                  onClick={() => handleCharacterClick(character.id)}
+                >
+                  {character.name}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+        <div className="characters">
+          {filteredCharacters.map((character) => (
+            <div
+              key={character.id}
+              className="character"
+              onClick={() => handleCharacterClick(character.id)}
+              title={character.name} // Adiciona um título para o tooltip
+            >
+              <img
+                src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+                alt={character.name}
+              />
+              <p>{character.name}</p>
+            </div>
+          ))}
+        </div>
       </div>
-      <div className="characters">
-        {filteredCharacters.map((character) => (
-          <div
-            key={character.id}
-            className="character"
-            onClick={() => handleCharacterClick(character.id)}
-            style={{ cursor: 'pointer' }}
-          >
-            <img
-              src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-              alt={character.name}
-            />
-            <p>{character.name}</p>
-          </div>
-        ))}
-      </div>
-      <style jsx>{`
-        .characters {
-          display: flex;
-          flex-wrap: wrap;
-        }
-        .character {
-          margin: 20px;
-        }
-        .character img {
-          width: 100px;
-          height: 100px;
-        }
-        .search-bar {
-          position: relative;
-          margin-bottom: 20px;
-          text-align: right;
-        }
-        .search-bar input {
-          padding: 10px;
-          font-size: 16px;
-          width: 300px;
-        }
-        .dropdown {
-          position: absolute;
-          right: 0;
-          background-color: white;
-          border: 1px solid #ccc;
-          width: 300px;
-          max-height: 200px;
-          overflow-y: auto;
-          z-index: 1000;
-        }
-        .dropdown-item {
-          padding: 10px;
-          border-bottom: 1px solid #ccc;
-        }
-        .dropdown-item:hover {
-          background-color: #f0f0f0;
-        }
-      `}</style>
     </div>
   );
 };

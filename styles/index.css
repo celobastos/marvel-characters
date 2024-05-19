@@ -3,6 +3,70 @@
 @tailwind utilities;
 
 .page-container {
-  @apply bg-cover bg-center min-h-screen;
+  @apply bg-cover bg-center min-h-screen flex items-center justify-center;
   background-image: url('/assets/backgroundSite.jpg'); /* Atualize o caminho conforme necessário */
+}
+
+.content-wrapper {
+  @apply bg-black bg-opacity-80 p-8;
+  max-width: 75%; /* Ajustar a largura máxima para aumentar o espaço nas laterais */
+  width: 100%;
+  min-height: 110vh;
+  height: auto;
+  margin: 0 10%; /* Adiciona margem lateral */
+}
+
+.search-bar {
+  @apply mb-4 relative; /* Adicionar relative para criar um contexto de posicionamento */
+  text-align: right;
+}
+
+.search-bar input {
+  @apply p-2 text-lg w-80 rounded-lg pl-4; /* Adicionar bordas arredondadas de 8px */
+  outline: none; /* Remover a borda ao selecionar */
+}
+
+.search-bar input:focus {
+  @apply border-none; /* Certificar-se de que a borda não aparece ao focar */
+}
+
+.characters {
+  @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-center ml-10;
+}
+
+.character {
+  @apply m-4 cursor-pointer;
+  width: 144px; /* Ajuste para corresponder ao tamanho da imagem */
+}
+
+.character img {
+  @apply w-36 h-36 rounded-lg transition-transform duration-300 ease-in-out; /* Adicionar transição suave */
+}
+
+.character img:hover {
+  @apply transform scale-110; /* Aumentar ligeiramente o tamanho da imagem ao passar o mouse */
+}
+
+.character p {
+  @apply text-white text-center;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  padding-top: 7%;
+}
+
+.dropdown {
+  @apply absolute right-0 bg-white border border-gray-300 w-80 max-h-52 overflow-y-auto z-50 rounded-lg; /* Adicionar bordas arredondadas de 8px */
+  top: 100%; /* Posicionar diretamente abaixo da barra de pesquisa */
+  margin-top: 0.5rem; /* Adicionar um pequeno espaço entre a barra de pesquisa e o dropdown */
+}
+
+.dropdown-item {
+  @apply p-2 border-b border-gray-300 text-left; /* Alinhar o texto à direita */
+}
+
+.dropdown-item:hover {
+  @apply bg-gray-200;
 }
