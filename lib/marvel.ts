@@ -5,6 +5,18 @@ const publicKey = process.env.NEXT_PUBLIC_MARVEL_PUBLIC_KEY!;
 const privateKey = process.env.NEXT_PUBLIC_MARVEL_PRIVATE_KEY!;
 const baseUrl = 'https://gateway.marvel.com:443/v1/public/characters';
 
+const ts = new Date().getTime();
+const hash = md5(ts + privateKey + publicKey);
+
+const api = axios.create({
+  baseURL: 'https://gateway.marvel.com:443/v1/public/',
+  params: {
+    ts,
+    apikey: publicKey,
+    hash,
+  },
+});
+
 interface Thumbnail {
   path: string;
   extension: string;
@@ -54,18 +66,8 @@ interface Character {
 }
 
 const fetchCharacters = async (): Promise<Character[]> => {
-  const ts = new Date().getTime();
-  const hash = md5(ts + privateKey + publicKey);
-
   try {
-    const response = await axios.get(baseUrl, {
-      params: {
-        ts,
-        apikey: publicKey,
-        hash,
-      },
-    });
-
+    const response = await api.get('/characters');
     return response.data.data.results.map((result: any) => ({
       id: result.id,
       name: result.name,
@@ -86,18 +88,8 @@ const fetchCharacters = async (): Promise<Character[]> => {
 };
 
 const fetchCharacter = async (id: string): Promise<Character> => {
-  const ts = new Date().getTime();
-  const hash = md5(ts + privateKey + publicKey);
-
   try {
-    const response = await axios.get(`${baseUrl}/${id}`, {
-      params: {
-        ts,
-        apikey: publicKey,
-        hash,
-      },
-    });
-
+    const response = await api.get(`/characters/${id}`);
     const result = response.data.data.results[0];
     return {
       id: result.id,
@@ -118,4 +110,21 @@ const fetchCharacter = async (id: string): Promise<Character> => {
   }
 };
 
-export { fetchCharacters, fetchCharacter };
+// Adicionar a função fetchComic
+const fetchComic = async (comicUrl: string): Promise<any> => {
+  try {
+    const response = await axios.get(comicUrl, {
+      params: {
+        ts,
+        apikey: publicKey,
+        hash,
+      },
+    });
+    return response.data.data.results[0];
+  } catch (error) {
+    console.error('Error fetching comic:', error);
+    throw error;
+  }
+};
+
+export { fetchCharacters, fetchCharacter, fetchComic };

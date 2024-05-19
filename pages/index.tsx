@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { fetchCharacters } from '../lib/marvel';
+import Header from '../components/Header';
 
 interface Thumbnail {
   path: string;
@@ -66,29 +67,15 @@ const Characters = () => {
   return (
     <div className="page-container">
       <div className="content-wrapper">
-        <h1 className="text-white text-center text-2xl mb-4">Marvel Characters</h1>
-        <div className="search-bar relative" ref={searchBarRef}>
-          <input
-            type="text"
-            value={search}
-            onChange={handleSearchChange}
-            placeholder="Search characters..."
-            onFocus={() => setShowDropdown(true)}
-          />
-          {showDropdown && (
-            <div className="dropdown">
-              {filteredCharacters.map((character) => (
-                <div
-                  key={character.id}
-                  className="dropdown-item"
-                  onClick={() => handleCharacterClick(character.id)}
-                >
-                  {character.name}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
+        <Header
+          search={search}
+          setSearch={setSearch}
+          handleSearchChange={handleSearchChange}
+          showDropdown={showDropdown}
+          filteredCharacters={filteredCharacters}
+          handleCharacterClick={handleCharacterClick}
+          setShowDropdown={setShowDropdown}
+        />
         <div className="characters">
           {filteredCharacters.map((character) => (
             <div
@@ -100,12 +87,63 @@ const Characters = () => {
               <img
                 src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
                 alt={character.name}
+                className="character-image"
               />
               <p>{character.name}</p>
             </div>
           ))}
         </div>
       </div>
+      <style jsx>{`
+        .page-container {
+          @apply bg-cover bg-center min-h-screen flex items-center justify-center overflow-hidden;
+          background-image: url('/assets/backgroundSite.jpg'); /* Atualize o caminho conforme necessário */
+        }
+        .content-wrapper {
+          @apply bg-black bg-opacity-80 p-8 rounded-lg overflow-y-auto; /* Adicionar bordas arredondadas, opacidade e overflow-y */
+          max-width: 75%;
+          width: 100%;
+          min-height: 110vh;
+          height: auto;
+          margin: 0 10%;
+        }
+        .header {
+          @apply flex items-center justify-between mb-8; /* Aumentar o espaço inferior para 8 */
+        }
+        .characters {
+          @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-center;
+        }
+        .character {
+          @apply m-4 cursor-pointer;
+          width: 144px; /* Ajuste para corresponder ao tamanho da imagem */
+        }
+        .character-image {
+          @apply w-24 h-24 rounded-lg transition-transform duration-300 ease-in-out; /* Definir a imagem menor com 96px x 96px */
+        }
+        .character-image:hover {
+          @apply transform scale-110; /* Aumentar ligeiramente o tamanho da imagem ao passar o mouse */
+        }
+        .character p {
+          @apply text-white text-center;
+          width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          display: block;
+          padding-top: 7%;
+        }
+        .dropdown {
+          @apply absolute right-0 bg-white border border-gray-300 w-80 max-h-52 overflow-y-auto z-50 rounded-lg; /* Adicionar bordas arredondadas de 8px */
+          top: 100%; /* Posicionar diretamente abaixo da barra de pesquisa */
+          margin-top: 0.5rem; /* Adicionar um pequeno espaço entre a barra de pesquisa e o dropdown */
+        }
+        .dropdown-item {
+          @apply p-2 border-b border-gray-300 text-right; /* Alinhar o texto à direita */
+        }
+        .dropdown-item:hover {
+          @apply bg-gray-200;
+        }
+      `}</style>
     </div>
   );
 };

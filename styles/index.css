@@ -16,9 +16,12 @@
   margin: 0 10%; /* Adiciona margem lateral */
 }
 
+.header {
+  @apply flex items-center justify-between mb-16; /* Adiciona um flex container para alinhamento horizontal */
+}
+
 .search-bar {
-  @apply mb-4 relative; /* Adicionar relative para criar um contexto de posicionamento */
-  text-align: right;
+  @apply relative; /* Adicionar relative para criar um contexto de posicionamento */
 }
 
 .search-bar input {
@@ -60,7 +63,6 @@
 .dropdown {
   @apply absolute right-0 bg-white border border-gray-300 w-80 max-h-52 overflow-y-auto z-50 rounded-lg; /* Adicionar bordas arredondadas de 8px */
   top: 100%; /* Posicionar diretamente abaixo da barra de pesquisa */
-  margin-top: 0.5rem; /* Adicionar um pequeno espaço entre a barra de pesquisa e o dropdown */
 }
 
 .dropdown-item {
