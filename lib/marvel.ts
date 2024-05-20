@@ -75,13 +75,16 @@ const fetchCharacters = async (offset = 0, limit = 100): Promise<Character[]> =>
       description: result.description || 'No description available.',
       modified: result.modified,
       thumbnail: result.thumbnail,
-      resourceURI: result.resourceURI,
+      resourceURI: result.resourceURI.replace(/^http:\/\//i, 'https://'),
       comics: result.comics || { available: 0, collectionURI: '', items: [] },
       series: result.series || { available: 0, collectionURI: '', items: [] },
       stories: result.stories || { available: 0, collectionURI: '', items: [] },
       events: result.events || { available: 0, collectionURI: '', items: [] },
-      urls: result.urls || [],
-    }));
+      urls: result.urls.map((url: Url) => ({
+        ...url,
+        url: url.url.replace(/^http:\/\//i, 'https://'),
+        })) || [],
+      }));
   } catch (error) {
     console.error('Error fetching characters:', error);
     throw error;
@@ -98,12 +101,15 @@ const fetchCharacter = async (id: string): Promise<Character> => {
       description: result.description || 'No description available.',
       modified: result.modified,
       thumbnail: result.thumbnail,
-      resourceURI: result.resourceURI,
+      resourceURI: result.resourceURI.replace(/^http:\/\//i, 'https://'),
       comics: result.comics || { available: 0, collectionURI: '', items: [] },
       series: result.series || { available: 0, collectionURI: '', items: [] },
       stories: result.stories || { available: 0, collectionURI: '', items: [] },
       events: result.events || { available: 0, collectionURI: '', items: [] },
-      urls: result.urls || [],
+      urls: result.urls.map((url: Url) => ({
+        ...url,
+        url: url.url.replace(/^http:\/\//i, 'https://'),
+      })) || [],
     };
   } catch (error) {
     console.error('Error fetching character:', error);

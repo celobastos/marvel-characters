@@ -18,17 +18,23 @@ const CharacterDetail: React.FC = () => {
   useEffect(() => {
     if (id) {
       const getCharacter = async () => {
-        const data = await fetchCharacter(id as string);
-        setCharacter(data);
+        try {
+          const data = await fetchCharacter(id as string);
+          setCharacter(data);
 
-        const thumbnails: { [key: string]: Thumbnail } = {};
-        for (const comic of data.comics.items) {
-          const comicData = await fetchComic(comic.resourceURI);
-          thumbnails[comic.resourceURI] = comicData.thumbnail;
+          const thumbnails: { [key: string]: Thumbnail } = {};
+          for (const comic of data.comics.items) {
+            const comicData = await fetchComic(comic.resourceURI.replace(/^http:\/\//i, 'https://'));
+            thumbnails[comic.resourceURI] = comicData.thumbnail;
+          }
+          setComicsThumbnails(thumbnails);
+          setLoading(false); // Set loading to false after data is fetched
+        } catch (error) {
+          console.error('Error fetching character:', error);
+          setLoading(false);
         }
-        setComicsThumbnails(thumbnails);
-        setLoading(false); // Set loading to false after data is fetched
       };
+
 
       getCharacter();
     }
