@@ -113,6 +113,7 @@ const fetchCharacter = async (id: string): Promise<Character> => {
 
 const fetchComic = async (comicUrl: string): Promise<any> => {
   try {
+    const secureComicUrl = comicUrl.replace(/^http:\/\//i, 'https://');
     const response = await axios.get(comicUrl, {
       params: {
         ts,
