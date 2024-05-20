@@ -1,13 +1,12 @@
-/* components/CharacterDetail/HeaderCharacter.module.css */
 .header {
     @apply flex items-center justify-between;
   }
   
   .logo {
-    @apply h-48; /* Adjust the height as needed */
+    @apply h-48; 
     padding-left: 5%;
-    height: 200px; /* Increase the height */
-    width: auto;/* Ensure the aspect ratio is maintained */
+    height: 200px;
+    width: auto;
   }
   
   .backButton {

@@ -1,4 +1,3 @@
-// interfaces/HeaderProps.ts
 export interface HeaderProps {
     search: string;
     setSearch: (value: string) => void;

@@ -72,7 +72,7 @@ const fetchCharacters = async (offset = 0, limit = 100): Promise<Character[]> =>
     return response.data.data.results.map((result: any) => ({
       id: result.id,
       name: result.name,
-      description: result.description || 'No description available.',
+      description: result.description || 'Sem Descricao disponivel.',
       modified: result.modified,
       thumbnail: result.thumbnail,
       resourceURI: result.resourceURI.replace(/^http:\/\//i, 'https://'),
@@ -98,7 +98,7 @@ const fetchCharacter = async (id: string): Promise<Character> => {
     return {
       id: result.id,
       name: result.name,
-      description: result.description || 'No description available.',
+      description: result.description || 'Sem descricao disponivel.',
       modified: result.modified,
       thumbnail: result.thumbnail,
       resourceURI: result.resourceURI.replace(/^http:\/\//i, 'https://'),

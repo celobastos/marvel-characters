@@ -5,28 +5,28 @@
 
 .page-container {
   @apply bg-cover bg-center min-h-screen flex items-center justify-center;
-  background-image: url('/assets/backgroundSite.jpg'); /* Atualize o caminho conforme necessário */
+  background-image: url('/assets/backgroundSite.jpg');
 }
 
 .content-wrapper {
   @apply bg-black bg-opacity-80 p-8;
-  max-width: 75%; /* Ajustar a largura máxima para aumentar o espaço nas laterais */
+  max-width: 75%;
   width: 100%;
   min-height: 110vh;
   height: auto;
-  margin: 0 10%; /* Adiciona margem lateral */
+  margin: 0 10%; 
 }
 
 .header {
-  @apply flex items-center justify-between mb-16; /* Adiciona um flex container para alinhamento horizontal */
+  @apply flex items-center justify-between mb-16;
 }
 
 .search-bar {
-  @apply relative; /* Adicionar relative para criar um contexto de posicionamento */
+  @apply relative; 
 }
 
 .search-bar input {
-  @apply p-2 text-lg w-80 rounded-lg pl-4; /* Adicionar bordas arredondadas de 8px */
+  @apply p-2 text-lg w-80 rounded-lg pl-4; 
   outline: none; 
 }
 
@@ -40,15 +40,15 @@
 
 .character {
   @apply m-4 cursor-pointer;
-  width: 144px; /* Ajuste para corresponder ao tamanho da imagem */
+  width: 144px; 
 }
 
 .character img {
-  @apply w-36 h-36 rounded-lg transition-transform duration-300 ease-in-out; /* Adicionar transição suave */
+  @apply w-36 h-36 rounded-lg transition-transform duration-300 ease-in-out; 
 }
 
 .character img:hover {
-  @apply transform scale-110; /* Aumentar ligeiramente o tamanho da imagem ao passar o mouse */
+  @apply transform scale-110; 
 }
 
 .character p {
@@ -62,12 +62,12 @@
 }
 
 .dropdown {
-  @apply absolute right-0 bg-white border border-gray-300 w-80 max-h-52 overflow-y-auto z-50 rounded-lg; /* Adicionar bordas arredondadas de 8px */
-  top: 100%; /* Posicionar diretamente abaixo da barra de pesquisa */
+  @apply absolute right-0 bg-white border border-gray-300 w-80 max-h-52 overflow-y-auto z-50 rounded-lg;
+  top: 100%; 
 }
 
 .dropdown-item {
-  @apply p-2 border-b border-gray-300 text-left; /* Alinhar o texto à direita */
+  @apply p-2 border-b border-gray-300 text-left;
 }
 
 .dropdown-item:hover {

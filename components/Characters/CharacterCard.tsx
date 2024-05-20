@@ -1,4 +1,3 @@
-// components/Characters/CharacterCard.tsx
 import React from 'react';
 import styles from '../../styles/Characters.module.css';
 import { Character } from '../../interfaces/CharacterInterfaces';

@@ -1,4 +1,4 @@
-// components/Spinner.tsx
+
 import styles from './../styles/Spinner.module.css';
 
 const Spinner = () => {

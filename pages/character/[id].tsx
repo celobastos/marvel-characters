@@ -13,7 +13,7 @@ const CharacterDetail: React.FC = () => {
   const { id } = router.query;
   const [character, setCharacter] = useState<Character | null>(null);
   const [comicsThumbnails, setComicsThumbnails] = useState<{ [key: string]: Thumbnail }>({});
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     if (id) {
@@ -28,7 +28,7 @@ const CharacterDetail: React.FC = () => {
             thumbnails[comic.resourceURI] = comicData.thumbnail;
           }
           setComicsThumbnails(thumbnails);
-          setLoading(false); // Set loading to false after data is fetched
+          setLoading(false); 
         } catch (error) {
           console.error('Error fetching character:', error);
           setLoading(false);

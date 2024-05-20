@@ -15,7 +15,7 @@ const Characters = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [loading, setLoading] = useState(true); 
   const charactersPerPage = 20;
   const router = useRouter();
   const searchBarRef = useRef<HTMLDivElement>(null);
@@ -26,7 +26,7 @@ const Characters = () => {
       setCharacters(data);
       setFilteredCharacters(data.slice(0, charactersPerPage));
       setTotalPages(Math.ceil(data.length / charactersPerPage));
-      setLoading(false); // Set loading to false after data is fetched
+      setLoading(false); 
     };
 
     getCharacters();

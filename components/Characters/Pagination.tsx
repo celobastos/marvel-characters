@@ -1,4 +1,3 @@
-// components/Characters/Pagination.tsx
 import React from 'react';
 import styles from '../../styles/Characters.module.css';
 
