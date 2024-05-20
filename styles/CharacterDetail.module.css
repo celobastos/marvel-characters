@@ -1,17 +1,13 @@
 .pageContainer {
-    background-image: url('/assets/backgroundSite.jpg');
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    flex-direction: column;
+  @apply bg-cover bg-center min-h-screen flex items-center justify-center overflow-hidden;
+  background-image: url('/assets/backgroundSite.jpg');
   }
   
   .contentWrapper {
     background-color: rgba(0, 0, 0, 0.8);
     padding: 32px;
     border-radius: 8px;
-    max-width: 75%;
+    max-width: 70%;
     width: 100%;
     min-height: 110vh;
   }

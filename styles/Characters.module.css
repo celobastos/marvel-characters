@@ -5,11 +5,11 @@
 
 .contentWrapper {
   @apply bg-black bg-opacity-80 p-8 rounded-lg overflow-y-auto;
-  max-width: 70%;
+  max-width: 75%;
   width: 100%;
   min-height: 110vh;
   height: auto;
-  margin: 0 15%; /* Increased left and right margins */
+  margin: 0 15%; 
   
 }
 

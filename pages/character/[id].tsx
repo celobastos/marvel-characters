@@ -34,19 +34,23 @@ const CharacterDetail: React.FC = () => {
     }
   }, [id]);
 
-  if (loading || !character) {
-    return <Spinner />;
-  }
-
   return (
     <div className={styles.pageContainer}>
       <div className={styles.contentWrapper}>
         <HeaderC />
         <div className={styles.characterDetail}>
-          <CharacterInfo character={character} />
-          <div className={styles.infoContainer}>
-            <ComicList comics={character.comics} comicsThumbnails={comicsThumbnails} />
-          </div>
+          {loading ? (
+            <Spinner />
+          ) : (
+            character && (
+              <>
+                <CharacterInfo character={character} />
+                <div className={styles.infoContainer}>
+                  <ComicList comics={character.comics} comicsThumbnails={comicsThumbnails} />
+                </div>
+              </>
+            )
+          )}
         </div>
       </div>
     </div>

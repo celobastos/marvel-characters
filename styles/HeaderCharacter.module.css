@@ -1,0 +1,27 @@
+/* components/CharacterDetail/HeaderCharacter.module.css */
+.header {
+    @apply flex items-center justify-between;
+  }
+  
+  .logo {
+    @apply h-48; /* Adjust the height as needed */
+    padding-left: 5%;
+    height: 200px; /* Increase the height */
+    width: auto;/* Ensure the aspect ratio is maintained */
+  }
+  
+  .backButton {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-right: 5%;
+  }
+  
+  .backButton:hover {
+    background-color: #f0f0f0;
+  }
+  

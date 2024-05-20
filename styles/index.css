@@ -2,23 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'MarvelFont';
-  src: url('/assets/fonts/MarvelFont-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'MarvelFont';
-  src: url('/assets/fonts/MarvelFont-Bold.ttf') format('truetype');
-  font-weight: bold;
-  font-style: normal;
-}
-
-h1 {
-  font-family: 'MarvelFont', sans-serif !important; /* Ensure the custom font is applied */
-}
 
 .page-container {
   @apply bg-cover bg-center min-h-screen flex items-center justify-center;
