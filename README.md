@@ -1,5 +1,3 @@
-Claro, aqui está o arquivo README.md em português, com informações sobre as tecnologias usadas e sem a parte do Vercel:
-
 ### README.md
 
 ```markdown

@@ -36,7 +36,7 @@ const Header: React.FC<HeaderProps> = ({
             type="text"
             value={search}
             onChange={handleSearchChange}
-            placeholder="Search..."
+            placeholder="Pesquisa"
             onFocus={() => setShowDropdown(true)}
             className={styles.searchBarInput}
           />
