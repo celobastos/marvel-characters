@@ -12,7 +12,7 @@ import styles from '../../styles/HeaderCharacter.module.css';
           className={styles.backButton}
           onClick={() => router.push('/')}
         >
-          Back to Index
+          Menu Inicial
         </button>
       </header>
     );

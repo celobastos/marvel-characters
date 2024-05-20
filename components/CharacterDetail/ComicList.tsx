@@ -10,7 +10,7 @@ interface ComicListProps {
 const ComicList: React.FC<ComicListProps> = ({ comics, comicsThumbnails }) => {
   return (
     <div className={styles.infoBox}>
-      <h2 className={styles.comicsTitle}>Comics</h2>
+      <img src="/assets/Comic Logo.svg" alt="Comics" className={styles.comicsLogo} />
       <ul className={styles.comicList}>
         {comics.items.map((item) => (
           <li key={item.resourceURI} className={styles.comicItem}>

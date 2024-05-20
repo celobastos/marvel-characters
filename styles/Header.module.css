@@ -1,56 +1,69 @@
 
-  .header {
-    @apply flex items-center justify-between;
-  }
-  
-  .logo {
-    @apply h-48; /* Adjust the height as needed */
-    padding-left: 5%;
-    height: 200px; /* Increase the height */
-    width: auto; /* Ensure the aspect ratio is maintained */
-  }
-  
-  .searchBar {
-    @apply relative;
-  }
-  
-  .searchBar input {
-    @apply p-2 text-lg w-80 rounded-lg pl-4;
-    outline: none;
-  }
-  
-  .searchBar input:focus {
-    @apply border-none;
-  }
-  
-  .dropdown {
-    @apply absolute right-0 bg-white border border-gray-300 w-80 max-h-52 overflow-y-auto z-50 rounded-lg;
-    top: 100%;
-    margin-top: 0.5rem;
-    scrollbar-width: thin;
-    scrollbar-color: #888 #fff;
-  }
-  
-  .dropdownItem {
-    @apply p-2 border-b border-gray-300 text-left;
-  }
-  
-  .dropdownItem:hover {
-    @apply bg-gray-200;
-  }
-  
-  /* Custom scrollbar for WebKit (Chrome, Safari) */
-  .dropdown::-webkit-scrollbar {
-    width: 8px;
-  }
-  
-  .dropdown::-webkit-scrollbar-track {
-    background: #fff;
-  }
-  
-  .dropdown::-webkit-scrollbar-thumb {
-    background-color: #888;
-    border-radius: 10px;
-    border: 2px solid #fff;
-  }
-  
+.header {
+  @apply flex items-center justify-between;
+}
+
+.logo {
+  @apply h-48; 
+  padding-left: 5%;
+  height: 200px;
+  width: auto; 
+}
+
+.searchBar {
+  @apply relative;
+}
+
+.searchBarWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+}
+
+.searchBarInput {
+  @apply p-2 text-lg w-80 rounded-lg pl-4 pr-10; /* Add right padding to make space for the icon */
+  outline: none;
+}
+
+.searchBarInput:focus {
+  @apply border-none;
+}
+
+.dropdown {
+  @apply absolute right-0 bg-white border border-gray-300 w-80 max-h-52 overflow-y-auto z-50 rounded-lg;
+  top: 100%;
+  margin-top: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: #888 #fff;
+}
+
+.dropdownItem {
+  @apply p-2 border-b border-gray-300 text-left;
+}
+
+.dropdownItem:hover {
+  @apply bg-gray-200;
+}
+
+/* Custom scrollbar for WebKit (Chrome, Safari) */
+.dropdown::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dropdown::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+.dropdown::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+  border: 2px solid #fff;
+}

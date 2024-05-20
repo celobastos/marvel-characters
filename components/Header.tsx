@@ -1,4 +1,3 @@
-// components/Header/Header.tsx
 import React, { useRef, useEffect } from 'react';
 import styles from '../styles/Header.module.css';
 import { HeaderProps } from './../interfaces/HeaderProps';
@@ -31,14 +30,17 @@ const Header: React.FC<HeaderProps> = ({
     <div className={styles.header}>
       <img src="/assets/Marvel Archive.svg" alt="Marvel Archive" className={styles.logo} />
       <div className={styles.searchBar} ref={searchBarRef}>
-        <input
-          type="text"
-          value={search}
-          onChange={handleSearchChange}
-          placeholder="Search characters..."
-          onFocus={() => setShowDropdown(true)}
-          className={styles.searchBarInput}
-        />
+        <div className={styles.searchBarWrapper}>
+          <img src="/assets/Lupa Icon.svg" alt="Search" className={styles.searchIcon} />
+          <input
+            type="text"
+            value={search}
+            onChange={handleSearchChange}
+            placeholder="Search..."
+            onFocus={() => setShowDropdown(true)}
+            className={styles.searchBarInput}
+          />
+        </div>
         {showDropdown && (
           <div className={styles.dropdown}>
             {filteredCharacters.map((character) => (

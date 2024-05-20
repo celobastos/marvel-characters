@@ -26,7 +26,7 @@
 .characterImage {
   @apply w-44 h-40 rounded-lg transition-transform duration-300 ease-in-out; 
   border: 1px;
-  border: 1px solid #f6f6f6 !important;
+  border: 1px solid #FED700 !important;
   border-radius: 8px;
 }
 
@@ -48,8 +48,8 @@
 }
 
 .pagination button {
-  @apply bg-white mx-1 px-3 py-1 rounded border text-black;
-  border: 1px solid white !important;
+  @apply bg-yellow-200 mx-1 px-3 py-1 rounded border text-black;
+  border: 1px solid #FED700 !important;
   padding: 0px 10px 0px 10px !important;
   margin: 10px;
   border-radius: 20px !important;

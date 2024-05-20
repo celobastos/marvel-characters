@@ -1,39 +1,47 @@
+/* CSS Styles for Comic Items */
 .infoBox {
-    background-color: #1a1a1a;
-    padding: 16px;
-    border-radius: 8px;
-    margin: 10px;
-    flex-basis: 45%;
-    margin-bottom: 20px;
-  }
-  
-  .comicsTitle {
-    color: #fff;
-    font-size: 24px;
-    margin-bottom: 16px;
-  }
-  
-  .comicList {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    justify-content: center;
-  }
-  
-  .comicItem {
-    text-align: center;
-  }
-  
-  .comicThumbnail {
-    width: 150px;
-    height: 225px;
-    border-radius: 4px;
-    margin-bottom: 8px;
-  }
-  
-  .comicName {
-    color: #fff;
-    word-wrap: break-word;
-    white-space: normal;
-  }
-  
+  padding: 16px;
+  border-radius: 8px;
+  margin: 10px;
+  flex-basis: 45%;
+  margin-bottom: 20px;
+  min-width: 80%;
+  border: 1px solid #FED700;
+}
+
+.comicsLogo {
+  display: block;
+  margin: auto; /* Center the logo and add some margin to the bottom */
+  width: 250px; /* Adjust the width as needed */
+  height: auto;
+  margin-bottom: -5%;
+  margin-top: -5%;
+}
+
+.comicList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  justify-content: center;
+}
+
+.comicItem {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px; /* Increase padding to the bottom */
+}
+
+.comicThumbnail {
+  width: 150px;
+  height: 225px;
+  border-radius: 4px;
+  margin-bottom: 10px; /* Add margin to the bottom to create space between thumbnail and name */
+}
+
+.comicName {
+  color: #fff;
+  word-wrap: break-word;
+  white-space: normal;
+}

@@ -9,6 +9,8 @@
     display: inline-block;
     text-align: left;
     margin-right: 20px;
+    border: 1px solid #FED700;
+    border-radius: 8px;
   }
   
   .imageContainer img {
@@ -21,7 +23,7 @@
     max-width: 600px;
     min-width: 600px;
     text-align: left;
-    border: 2px solid #fff;
+    border: 2px solid #FED700;
     padding: 10px;
     border-radius: 8px;
     display: flex;
