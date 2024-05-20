@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Claro, aqui está o arquivo README.md em português, com informações sobre as tecnologias usadas e sem a parte do Vercel:
 
-## Getting Started
+### README.md
 
-First, run the development server:
+```markdown
+# Marvel Characters
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Marvel Characters é uma aplicação web que permite aos usuários navegar e pesquisar por personagens da Marvel. A aplicação busca dados da API da Marvel e exibe informações detalhadas sobre cada personagem.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tecnologias Utilizadas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [Next.js]
+- [React]
+- [Axios]
+- [Tailwind CSS]
+- [TypeScript]
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Funcionalidades
 
-## Learn More
+- Navegar pelos personagens da Marvel
+- Pesquisar por personagens específicos
+- Visualizar informações detalhadas sobre cada personagem
+- Design responsivo
 
-To learn more about Next.js, take a look at the following resources:
+## Primeiros Passos
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Siga estas instruções para configurar o projeto localmente na sua máquina.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Pré-requisitos
 
-## Deploy on Vercel
+Certifique-se de ter o seguinte software instalado:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [Node.js]
+- [npm]
+- [Git]
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Instalação
+
+1. **Clone o repositório**
+
+   ```bash
+   git clone https://github.com/celobastos/marvel-characters.git
+   ```
+
+2. **Navegue até o diretório do projeto**
+
+   ```bash
+   cd marvel-characters
+   ```
+
+3. **Instale as dependências**
+
+   Usando npm:
+
+   ```bash
+   npm install
+   ```
+
+   Ou usando yarn:
+
+   ```bash
+   yarn install
+   ```
+
+### Configuração
+
+1. **Obtenha as chaves da API da Marvel**
+
+   - Acesse o [Portal do Desenvolvedor da Marvel](https://developer.marvel.com/)
+   - Crie uma nova aplicação para obter suas chaves pública e privada.
+
+2. **Configure as variáveis de ambiente**
+
+   Crie um arquivo `.env.local` no diretório raiz do projeto e adicione suas chaves da API da Marvel:
+
+   ```plaintext
+   NEXT_PUBLIC_MARVEL_PUBLIC_KEY=sua_chave_publica
+   NEXT_PUBLIC_MARVEL_PRIVATE_KEY=sua_chave_privada
+   ```
+
+### Executando a Aplicação
+
+1. **Inicie o servidor de desenvolvimento**
+
+   Usando npm:
+
+   ```bash
+   npm run dev
+   ```
+
+   Ou usando yarn:
+
+   ```bash
+   yarn dev
+   ```
+
+2. **Abra o navegador**
+
+   Abra seu navegador e navegue até [http://localhost:3000](http://localhost:3000) para ver a aplicação.
