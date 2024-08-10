@@ -97,3 +97,8 @@ Certifique-se de ter o seguinte software instalado:
 ### OBSERVACAO
 
    Foram puxados da API apenas 100 personagens, para maior eficiencia de carregamento.
+
+# Telas do projeto
+
+![image](https://github.com/user-attachments/assets/a7d0cfe2-3c82-4cf5-a9c8-ffdf113e6382)
+
